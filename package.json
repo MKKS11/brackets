@@ -65,7 +65,8 @@
         "prepush": "npm run eslint",
         "postinstall": "grunt install",
         "test": "grunt test",
-        "eslint": "grunt eslint"
+        "eslint": "grunt eslint",
+        "email:worker": "node tools/email/worker.js"
     },
     "licenses": [
         {
