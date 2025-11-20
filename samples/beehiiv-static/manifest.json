@@ -1,0 +1,9 @@
+{
+  "name": "beehiiv demo shell",
+  "short_name": "beehiiv",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": []
+}
