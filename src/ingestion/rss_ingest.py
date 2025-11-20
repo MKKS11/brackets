@@ -14,6 +14,7 @@ import os
 import sqlite3
 import sys
 import time
+import calendar
 from datetime import datetime, timezone
 from typing import Iterable, List, Mapping, Optional
 
@@ -77,7 +78,10 @@ def parse_datetime(entry: Mapping[str, object]) -> Optional[str]:
     dt: Optional[datetime] = None
 
     if time_struct:
-        dt = datetime.fromtimestamp(time.mktime(time_struct), tz=timezone.utc)
+        # calendar.timegm interprets the struct_time as UTC, avoiding local
+        # timezone offsets that would occur with time.mktime.
+        timestamp = calendar.timegm(time_struct)
+        dt = datetime.fromtimestamp(timestamp, tz=timezone.utc)
     else:
         date_str = entry.get("published") or entry.get("updated")
         if date_str:
